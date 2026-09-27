@@ -1,0 +1,278 @@
+/* Let's SEO — admin. Monochrome, sharp corners, type does the work. */
+
+.lets-seo {
+	--ls-ink: #111;
+	--ls-muted: #646970;
+	--ls-line: #dcdcde;
+	--ls-good: #1a7f37;
+	--ls-ok: #b26200;
+	--ls-bad: #b32d2e;
+	font-size: 13px;
+}
+
+.lets-seo__notice {
+	margin: 0 0 12px;
+	padding: 10px 12px;
+	border-inline-start: 3px solid var(--ls-ok);
+	background: #fcf9e8;
+}
+
+.lets-seo__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0;
+	margin: 0 0 16px;
+	border-bottom: 1px solid var(--ls-line);
+}
+
+.lets-seo__tabs button {
+	padding: 10px 16px;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+	background: none;
+	color: var(--ls-muted);
+	font: inherit;
+	font-weight: 500;
+	cursor: pointer;
+	transition: color .3s, border-color .3s;
+}
+
+.lets-seo__tabs button:hover,
+.lets-seo__tabs button.is-active {
+	color: var(--ls-ink);
+	border-bottom-color: var(--ls-ink);
+}
+
+.lets-seo__panel { display: none; }
+.lets-seo__panel.is-active { display: block; }
+
+.lets-seo__field { margin: 0 0 16px; }
+
+.lets-seo__field > label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+	color: var(--ls-ink);
+}
+
+.lets-seo__field input[type="text"],
+.lets-seo__field input[type="url"],
+.lets-seo__field textarea,
+.lets-seo__field select {
+	width: 100%;
+	max-width: 720px;
+}
+
+.lets-seo__check > label { font-weight: 400; }
+
+.lets-seo__hint {
+	display: block;
+	margin-top: 4px;
+	color: var(--ls-muted);
+}
+
+/* Character counter under a field. */
+.lets-seo__count {
+	display: block;
+	max-width: 720px;
+	margin-top: 4px;
+}
+
+.lets-seo__count-bar {
+	display: block;
+	height: 3px;
+	background: var(--ls-line);
+}
+
+.lets-seo__count-bar i {
+	display: block;
+	height: 100%;
+	width: 0;
+	transition: width .3s, background .3s;
+}
+
+.lets-seo__count-text {
+	display: block;
+	margin-top: 2px;
+	color: var(--ls-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.lets-seo__count.is-good i { background: var(--ls-good); }
+.lets-seo__count.is-ok i { background: var(--ls-ok); }
+.lets-seo__count.is-bad i { background: var(--ls-bad); }
+
+/* Google result preview. */
+.lets-seo__serp {
+	max-width: 600px;
+	margin: 0 0 20px;
+	padding: 16px 18px;
+	border: 1px solid var(--ls-line);
+	background: #fff;
+	font-family: Arial, sans-serif;
+}
+
+.lets-seo__serp-site { font-size: 14px; color: #202124; }
+.lets-seo__serp-url { font-size: 12px; color: #4d5156; direction: ltr; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lets-seo__serp-title { margin: 4px 0 2px; font-size: 20px; line-height: 1.3; color: #1a0dab; }
+.lets-seo__serp-desc { font-size: 14px; line-height: 1.58; color: #4d5156; }
+
+/* Social card preview. */
+.lets-seo__share-preview {
+	max-width: 520px;
+	margin: 0 0 20px;
+	border: 1px solid var(--ls-line);
+	background: #f0f2f5;
+}
+
+.lets-seo__share-preview img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 1200 / 630;
+	object-fit: cover;
+}
+
+.lets-seo__share-empty {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 1200 / 630;
+	color: var(--ls-muted);
+	background: #fafafa;
+}
+
+.lets-seo__share-meta {
+	display: grid;
+	gap: 2px;
+	padding: 10px 12px;
+	font-family: Arial, sans-serif;
+}
+
+.lets-seo__share-meta span:first-child { font-size: 12px; color: #65676b; }
+.lets-seo__share-meta strong { font-size: 16px; color: #050505; }
+.lets-seo__share-meta span:last-child { font-size: 14px; color: #65676b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Media picker. */
+.lets-seo__media {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.lets-seo__media img {
+	max-width: 180px;
+	max-height: 100px;
+	border: 1px solid var(--ls-line);
+}
+
+.lets-seo__media img[hidden],
+.lets-seo__media [hidden] { display: none; }
+
+/* FAQ. */
+.lets-seo__faq-row {
+	position: relative;
+	display: grid;
+	gap: 6px;
+	max-width: 720px;
+	margin: 8px 0;
+	padding: 12px 12px 12px 36px;
+	border: 1px solid var(--ls-line);
+	background: #fff;
+}
+
+.lets-seo__faq-row input,
+.lets-seo__faq-row textarea { width: 100%; }
+
+.lets-seo__faq-remove {
+	position: absolute;
+	top: 8px;
+	left: 10px;
+	font-size: 18px;
+	line-height: 1;
+	color: var(--ls-bad) !important;
+	text-decoration: none !important;
+}
+
+/* Analysis checklist. */
+.lets-seo__analysis {
+	max-width: 720px;
+	margin-top: 24px;
+	padding-top: 16px;
+	border-top: 1px solid var(--ls-line);
+}
+
+.lets-seo__analysis h4 {
+	margin: 0 0 8px;
+	font-size: 14px;
+}
+
+.lets-seo__analysis h4 span {
+	color: var(--ls-muted);
+	font-weight: 400;
+}
+
+.lets-seo__analysis ul { margin: 0; }
+
+.lets-seo__analysis li {
+	position: relative;
+	margin: 0 0 6px;
+	padding-inline-start: 18px;
+}
+
+.lets-seo__analysis li::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	top: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+}
+
+.lets-seo__analysis li.is-good::before { background: var(--ls-good); }
+.lets-seo__analysis li.is-bad::before { background: var(--ls-bad); }
+
+/* Term edit screen. */
+.lets-seo--term {
+	max-width: 900px;
+	margin-top: 24px;
+	padding-top: 8px;
+	border-top: 1px solid #dcdcde;
+}
+
+/* List column. */
+.column-lets_seo { width: 160px; }
+
+.lets-seo-dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	margin-inline-end: 4px;
+	border-radius: 50%;
+	background: #b32d2e;
+	vertical-align: middle;
+}
+
+.lets-seo-dot.is-good { background: #1a7f37; }
+.lets-seo-dot.is-ok { background: #b26200; }
+.lets-seo-dot.is-muted { background: #a7aaad; }
+
+/* Settings page. */
+.lets-seo-settings .lets-seo-card {
+	max-width: 900px;
+	margin: 16px 0;
+	padding: 4px 20px 12px;
+	border: 1px solid #dcdcde;
+	background: #fff;
+}
+
+.lets-seo-settings .lets-seo-card h2 { margin: 16px 0 8px; }
+.lets-seo-settings .lets-seo-card--status { border-inline-start: 3px solid #111; }
+
+.lets-seo-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 16px;
+	justify-content: flex-end;
+}
