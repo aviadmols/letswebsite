@@ -38,8 +38,10 @@ add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 // SEO: meta tags, schema, sitemaps, AI layer (llms.txt, Markdown) and share images. Settings → SEO.
 require_once get_stylesheet_directory() . '/includes/seo/bootstrap.php';
 
-// Landing page copy (also feeds the SEO module's Markdown/AI version and schema).
+// Landing pages: copy from JSON with export/import on the edit screen; also feeds the SEO module.
+require_once get_stylesheet_directory() . '/includes/landing/class-lets-landing-copy.php';
 require_once get_stylesheet_directory() . '/includes/landing/post-purchase-copy.php';
+Lets_Landing_Copy::init();
 
 /**
  * Landing pages (templates/landing-*.php) share one stylesheet and script.

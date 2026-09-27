@@ -38,7 +38,8 @@ function lets_lp_icon( $name ) {
 		'status' => '<path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
 		'sub'    => '<path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/>',
 	);
-	echo '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $paths[ $name ] . '</svg>'; // phpcs:ignore WordPress.Security.EscapeOutput -- static SVG.
+	$path = isset( $paths[ $name ] ) ? $paths[ $name ] : $paths['box'];
+	echo '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $path . '</svg>'; // phpcs:ignore WordPress.Security.EscapeOutput -- static SVG.
 }
 
 /**
@@ -138,10 +139,10 @@ function lets_lp_visual( $kind, array $m ) {
 					<span class="lp-badge lp-badge--ok">החיוב הצליח</span>
 				</div>
 				<div class="lp-ledger__amount">₪39.00</div>
-				<div class="lp-ledger__meta"><span>Visa •••• 4242</span><span>אישור 0483921</span><span>PayPlus · טוקן שמור</span></div>
+				<div class="lp-ledger__meta"><span>Visa •••• 4242</span><span>אישור 0483921</span><span>טוקן שמור</span></div>
 				<ul class="lp-timeline">
 					<li><b>הלקוח אישר את ההצעה</b><span>עמוד תודה · 14:32:05 · הסכמה לחיוב נוסף נרשמה</span></li>
-					<li><b>החיוב עבר על הטוקן השמור</b><span>PayPlus · 14:32:06 · מפתח ייחודי: upsell:1042:7</span></li>
+					<li><b>החיוב עבר על הטוקן השמור</b><span>סליקה · 14:32:06 · מפתח ייחודי: upsell:1042:7</span></li>
 					<li class="is-order"><b>הזמנה #1043 נוצרה בחנות</b><span>מקושרת ל-#1042 · מסומנת כשולמה · המלאי עודכן</span></li>
 					<li class="is-doc"><b>חשבונית מס/קבלה 20261 הופקה</b><span>נשלחה ללקוח במייל · מופיעה באזור האישי</span></li>
 				</ul>
@@ -179,7 +180,7 @@ function lets_lp_visual( $kind, array $m ) {
 	}
 }
 
-$lets_lp = lets_lp_post_purchase();
+$lets_lp = lets_lp_post_purchase( get_the_ID() );
 $m       = $lets_lp['mock'];
 
 get_header();
