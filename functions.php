@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HELLO_ELEMENTOR_CHILD_VERSION', '2.0.0' );
+define( 'HELLO_ELEMENTOR_CHILD_VERSION', '2.0.1' );
 
 /**
  * Load child theme scripts & styles.
@@ -67,3 +67,14 @@ function hello_elementor_child_landing_assets() {
 	wp_enqueue_script( 'lets-landing', get_stylesheet_directory_uri() . '/assets/landing/landing.js', array(), HELLO_ELEMENTOR_CHILD_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_landing_assets', 30 );
+
+/**
+ * Landing pages: mark <html> as scripted before paint, so reveal-on-scroll
+ * hides content only when the script that shows it again is running.
+ */
+function hello_elementor_child_landing_js_flag() {
+	if ( is_page() && 0 === strpos( (string) get_page_template_slug(), 'templates/landing-' ) ) {
+		echo "<script>document.documentElement.classList.add('lp-js');</script>\n";
+	}
+}
+add_action( 'wp_head', 'hello_elementor_child_landing_js_flag', 1 );

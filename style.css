@@ -13,3 +13,109 @@ Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, fe
 */
 
 /* Add your custom styles here */
+
+/* =========================================================================
+   Mobile fixes for the Elementor header (template 420) and footer (540).
+   Elementor has no mobile values set for these, so they are set here.
+   ========================================================================= */
+
+/* Nothing may push the page sideways. */
+html, body { overflow-x: clip; }
+
+@media (max-width: 767px) {
+
+	/* --- Header: one row — logo on the right, menu + CTA on the left --- */
+	body .elementor-420 .elementor-element-acb3518 {
+		padding: 12px 16px !important;
+	}
+
+	body .elementor-420 .elementor-element-acb3518 > .elementor-container {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 10px;
+	}
+
+	body .elementor-420 .elementor-element-acb3518 > .elementor-container > .elementor-column {
+		width: auto !important;
+		flex: 0 0 auto;
+	}
+
+	body .elementor-420 .elementor-element-acb3518 .elementor-widget-wrap {
+		padding: 0 !important;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 8px;
+	}
+
+	/* Logo first (right side in RTL) taking the free space, then CTA, menu button at the far edge. */
+	body .elementor-420 .elementor-element-7e41b42 { order: 1; flex: 1 1 auto !important; }
+	body .elementor-420 .elementor-element-a70043f { order: 2; }
+	body .elementor-420 .elementor-element-35594b8 { order: 3; }
+
+	body .elementor-420 .elementor-element-48d7f4e,
+	body .elementor-420 .elementor-element-48d7f4e p { margin: 0 !important; font-size: 26px !important; line-height: 1 !important; }
+
+	/* CTA + language: compact pills. */
+	body .elementor-420 .elementor-element-b75b0ff .elementor-button {
+		font-size: 15px !important;
+		padding: 10px 14px !important;
+		white-space: nowrap;
+	}
+
+	body .elementor-420 .elementor-element-762c879 .elementor-button {
+		font-size: 15px !important;
+		padding: 10px 6px !important;
+	}
+
+	body .elementor-420 .elementor-element-b75b0ff,
+	body .elementor-420 .elementor-element-762c879,
+	body .elementor-420 .elementor-element-21f4929 { margin: 0 !important; }
+
+	/* The menu's dropdown opens across the full screen under the header. */
+	body .elementor-420 .elementor-element-21f4929 .elementor-menu-toggle {
+		margin: 0;
+		padding: 6px !important;
+		background: transparent !important;
+	}
+
+	body .elementor-420 .elementor-element-21f4929 .elementor-nav-menu--dropdown {
+		position: fixed !important;
+		top: 70px !important;
+		left: 0 !important;
+		right: 0 !important;
+		width: 100vw !important;
+		margin: 0 !important;
+		padding: 8px 16px 20px !important;
+		background: #fff !important;
+		border-bottom: 1.5px solid #000;
+		box-shadow: 0 24px 40px -24px rgba(0, 0, 0, .35);
+		z-index: 9999;
+	}
+
+	body .elementor-420 .elementor-element-21f4929 .elementor-nav-menu--dropdown a {
+		justify-content: flex-start;
+		padding: 14px 0 !important;
+		border-bottom: 1px solid #e3e3dd;
+		background: transparent !important;
+		color: #000 !important;
+		font-size: 24px !important;
+	}
+
+	/* --- Footer: the big email / phone scale down instead of overflowing --- */
+	body .elementor-540 .elementor-element-6bb1067,
+	body .elementor-540 .elementor-element-b0e13be { padding-inline: 16px !important; }
+
+	body .elementor-540 .elementor-element-9707211 {
+		font-size: clamp(30px, 10vw, 75px) !important;
+		line-height: 1.1 !important;
+	}
+
+	body .elementor-540 .elementor-element-9707211 p { margin: 0 0 6px; }
+	body .elementor-540 .elementor-element-9707211 a { overflow-wrap: anywhere; }
+
+	body .elementor-540 .elementor-element-7af3f5c > .elementor-widget-wrap,
+	body .elementor-540 .elementor-element-b60cfd9 > .elementor-widget-wrap { padding: 20px 0 !important; }
+
+	body .elementor-540 .elementor-element-ee354bc { font-size: 13px !important; line-height: 1.7 !important; }
+}
