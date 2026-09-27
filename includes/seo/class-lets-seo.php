@@ -309,7 +309,14 @@ class Lets_SEO {
 			$html = $post->post_content;
 		}
 
-		$cache[ $post->ID ] = (string) $html;
+		/**
+		 * The HTML the SEO module treats as the page's body. A template-driven
+		 * page with no post_content supplies its text here.
+		 *
+		 * @param string  $html Rendered body.
+		 * @param WP_Post $post Post.
+		 */
+		$cache[ $post->ID ] = (string) apply_filters( 'lets_seo_rendered_content', (string) $html, $post );
 
 		return $cache[ $post->ID ];
 	}
