@@ -11,6 +11,16 @@ class Lets_SEO_Settings {
 
 	const PAGE = 'lets-seo';
 
+	/** Hook suffix of the settings page, set when the menu is registered. */
+	public static $hook = '';
+
+	/**
+	 * @return string URL of the settings page.
+	 */
+	public static function url() {
+		return class_exists( 'Lets_Admin' ) ? Lets_Admin::url( self::PAGE ) : admin_url( 'options-general.php?page=' . self::PAGE );
+	}
+
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ) );
 		add_action( 'admin_init', array( __CLASS__, 'register' ) );
@@ -19,7 +29,10 @@ class Lets_SEO_Settings {
 	}
 
 	public static function menu() {
-		add_options_page( 'SEO', 'SEO', 'manage_options', self::PAGE, array( __CLASS__, 'render' ) );
+		// Under the LETS menu when the theme provides it, else under Settings.
+		self::$hook = class_exists( 'Lets_Admin' )
+			? (string) add_submenu_page( Lets_Admin::MENU, 'SEO', 'SEO', 'manage_options', self::PAGE, array( __CLASS__, 'render' ) )
+			: (string) add_options_page( 'SEO', 'SEO', 'manage_options', self::PAGE, array( __CLASS__, 'render' ) );
 	}
 
 	public static function register() {
@@ -82,14 +95,14 @@ class Lets_SEO_Settings {
 		$competing = Lets_SEO::competing_plugin();
 		$screen    = get_current_screen();
 
-		if ( ! $competing || ! current_user_can( 'manage_options' ) || ! $screen || ! in_array( $screen->id, array( 'dashboard', 'plugins', 'settings_page_' . self::PAGE ), true ) ) {
+		if ( ! $competing || ! current_user_can( 'manage_options' ) || ! $screen || ! in_array( $screen->id, array( 'dashboard', 'plugins', self::$hook ), true ) ) {
 			return;
 		}
 
 		printf(
 			'<div class="notice notice-warning"><p><strong>Let\'s SEO</strong> ממתין: %1$s פעיל, ולכן הכותרות, התגיות, הסכמה וה־sitemap של %1$s הם שמודפסים עכשיו. <a href="%2$s">ייבוא מ־%1$s והוראות מעבר</a>.</p></div>',
 			esc_html( $competing ),
-			esc_url( admin_url( 'options-general.php?page=' . self::PAGE ) )
+			esc_url( self::url() )
 		);
 	}
 

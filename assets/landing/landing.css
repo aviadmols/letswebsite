@@ -5,14 +5,7 @@
    16px radii, pill buttons. RTL-first, written with logical properties.
    ========================================================================= */
 
-/* --- Fonts (same families Elementor registers on the site) ------------- */
-@font-face { font-family: "basics"; src: url("../fonts/TheBasics-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "basics"; src: url("../fonts/TheBasics-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "simona"; src: url("../fonts/SimonaPro-Thin.woff2") format("woff2"); font-weight: 200; font-style: normal; font-display: swap; }
-@font-face { font-family: "simona"; src: url("../fonts/SimonaPro-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "simona"; src: url("../fonts/SimonaPro-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "simona"; src: url("../fonts/SimonaPro-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "simona"; src: url("../fonts/SimonaPro-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
+/* Fonts: assets/fonts/fonts.css (enqueued site-wide). */
 
 /* --- Tokens ------------------------------------------------------------ */
 .lp {

@@ -1,0 +1,41 @@
+/* LETS admin pages — overview cards and settings. */
+
+.lets-admin__intro { font-size: 14px; color: #646970; margin-top: -4px; }
+
+.lets-admin__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 16px;
+	max-width: 1100px;
+	margin-top: 20px;
+}
+
+.lets-admin__card {
+	padding: 18px 20px 16px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	background: #fff;
+}
+
+.lets-admin__card--wide { max-width: 900px; margin-top: 16px; }
+.lets-admin__card h2 { margin: 0 0 10px; font-size: 16px; }
+.lets-admin__card p { margin: 0 0 10px; }
+.lets-admin__big { font-size: 36px; line-height: 1; font-weight: 400; margin: 6px 0 4px !important; }
+.lets-admin__links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 12px !important; }
+.lets-admin__muted { color: #646970; font-size: 12px; }
+.lets-admin__list { margin: 0 0 8px; }
+.lets-admin__list li { display: flex; gap: 8px; align-items: baseline; margin: 0 0 4px; }
+
+.lets-admin__dot {
+	display: inline-block;
+	width: 9px;
+	height: 9px;
+	margin-inline-end: 4px;
+	border-radius: 50%;
+	vertical-align: middle;
+	background: #a7aaad;
+}
+
+.lets-admin__dot.is-ok { background: #1a7f37; }
+.lets-admin__dot.is-warn { background: #b26200; }
+.lets-admin__dot.is-off { background: #b32d2e; }

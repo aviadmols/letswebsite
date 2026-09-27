@@ -1,5 +1,5 @@
 {
-  "cta_primary": { "label": "התחילו עכשיו", "url": "https://app.lets.co.il" },
+  "cta_primary": { "label": "התחילו עכשיו", "url": "#signup" },
   "cta_secondary": { "label": "קבעו שיחת היכרות", "url": "#contact" },
   "contact_email": "hey@lets.co.il",
 

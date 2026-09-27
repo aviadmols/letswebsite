@@ -56,15 +56,7 @@ class Lets_SEO_Import {
 
 		$message = sprintf( 'הייבוא הסתיים: %d עמודים, %d קטגוריות/תגיות, %d הגדרות אתר.', $posts, $terms, $settings );
 
-		wp_safe_redirect(
-			add_query_arg(
-				array(
-					'page'              => Lets_SEO_Settings::PAGE,
-					'lets_seo_imported' => rawurlencode( $message ),
-				),
-				admin_url( 'options-general.php' )
-			)
-		);
+		wp_safe_redirect( add_query_arg( 'lets_seo_imported', rawurlencode( $message ), Lets_SEO_Settings::url() ) );
 		exit;
 	}
 

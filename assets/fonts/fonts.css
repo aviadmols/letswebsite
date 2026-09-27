@@ -1,0 +1,8 @@
+/* The site's typefaces, shipped with the theme. Same family names Elementor registers. */
+@font-face { font-family: "basics"; src: url("TheBasics-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "basics"; src: url("TheBasics-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "simona"; src: url("SimonaPro-Thin.woff2") format("woff2"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "simona"; src: url("SimonaPro-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "simona"; src: url("SimonaPro-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "simona"; src: url("SimonaPro-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "simona"; src: url("SimonaPro-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }

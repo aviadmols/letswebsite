@@ -35,13 +35,21 @@ function hello_elementor_child_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 
-// SEO: meta tags, schema, sitemaps, AI layer (llms.txt, Markdown) and share images. Settings → SEO.
+// The LETS menu in wp-admin: overview + site settings; other modules add their pages under it.
+require_once get_stylesheet_directory() . '/includes/admin/class-lets-admin.php';
+Lets_Admin::init();
+
+// SEO: meta tags, schema, sitemaps, AI layer (llms.txt, Markdown) and share images. LETS → SEO.
 require_once get_stylesheet_directory() . '/includes/seo/bootstrap.php';
 
 // Landing pages: copy from JSON with export/import on the edit screen; also feeds the SEO module.
 require_once get_stylesheet_directory() . '/includes/landing/class-lets-landing-copy.php';
 require_once get_stylesheet_directory() . '/includes/landing/post-purchase-copy.php';
 Lets_Landing_Copy::init();
+
+// Signup / contact popup on every page (opens from any link to #signup) + leads in wp-admin.
+require_once get_stylesheet_directory() . '/includes/leads/class-lets-leads.php';
+Lets_Leads::init();
 
 /**
  * Landing pages (templates/landing-*.php) share one stylesheet and script.
@@ -51,7 +59,7 @@ function hello_elementor_child_landing_assets() {
 		return;
 	}
 
-	wp_enqueue_style( 'lets-landing', get_stylesheet_directory_uri() . '/assets/landing/landing.css', array(), HELLO_ELEMENTOR_CHILD_VERSION );
+	wp_enqueue_style( 'lets-landing', get_stylesheet_directory_uri() . '/assets/landing/landing.css', array( 'lets-fonts' ), HELLO_ELEMENTOR_CHILD_VERSION );
 	wp_enqueue_style( 'lets-landing-outfit', 'https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap', array(), null );
 	wp_enqueue_script( 'lets-landing', get_stylesheet_directory_uri() . '/assets/landing/landing.js', array(), HELLO_ELEMENTOR_CHILD_VERSION, true );
 }

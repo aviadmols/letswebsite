@@ -127,7 +127,7 @@ class Lets_SEO_Meta {
 		$screen  = get_current_screen();
 		$on_post = in_array( $hook, array( 'post.php', 'post-new.php' ), true ) && $screen && in_array( $screen->post_type, Lets_SEO::post_types(), true );
 		$on_term = 'term.php' === $hook;
-		$on_page = 'settings_page_' . Lets_SEO_Settings::PAGE === $hook;
+		$on_page = '' !== Lets_SEO_Settings::$hook && Lets_SEO_Settings::$hook === $hook;
 
 		if ( 'edit.php' === $hook ) {
 			// Only the list column's status dots.

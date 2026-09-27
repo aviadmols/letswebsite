@@ -20,14 +20,25 @@ class Lets_AI_Admin {
 	}
 
 	public static function menu() {
-		add_management_page( 'AI Bridge', 'AI Bridge', 'manage_options', self::PAGE_SLUG, array( __CLASS__, 'render' ) );
+		if ( class_exists( 'Lets_Admin' ) ) {
+			add_submenu_page( Lets_Admin::MENU, 'AI Bridge', 'AI Bridge', 'manage_options', self::PAGE_SLUG, array( __CLASS__, 'render' ) );
+		} else {
+			add_management_page( 'AI Bridge', 'AI Bridge', 'manage_options', self::PAGE_SLUG, array( __CLASS__, 'render' ) );
+		}
+	}
+
+	/**
+	 * @return string URL of the AI Bridge page.
+	 */
+	public static function url() {
+		return class_exists( 'Lets_Admin' ) ? Lets_Admin::url( self::PAGE_SLUG ) : admin_url( 'tools.php?page=' . self::PAGE_SLUG );
 	}
 
 	/**
 	 * @param array<string,string> $args Query args.
 	 */
 	protected static function back( array $args ) {
-		wp_safe_redirect( add_query_arg( array_merge( array( 'page' => self::PAGE_SLUG ), $args ), admin_url( 'tools.php' ) ) );
+		wp_safe_redirect( add_query_arg( $args, self::url() ) );
 		exit;
 	}
 
