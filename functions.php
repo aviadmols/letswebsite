@@ -39,6 +39,9 @@ add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 require_once get_stylesheet_directory() . '/includes/admin/class-lets-admin.php';
 Lets_Admin::init();
 
+// AI Bridge: tokens for Claude / Cursor to read and edit the database (LETS → AI Bridge).
+require_once get_stylesheet_directory() . '/includes/ai-bridge/bootstrap.php';
+
 // SEO: meta tags, schema, sitemaps, AI layer (llms.txt, Markdown) and share images. LETS → SEO.
 require_once get_stylesheet_directory() . '/includes/seo/bootstrap.php';
 
