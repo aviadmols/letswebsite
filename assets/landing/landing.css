@@ -771,6 +771,185 @@ main.site-main.lp {
 .lp-cta__dot { width: clamp(64px, 8vw, 112px); aspect-ratio: 1; border-radius: 50%; background: var(--lp-ink); }
 .lp-cta .lp-actions { margin-block-start: 28px; }
 
+/* --- Dark hero (landing-post-purchase-v2) ------------------------------- */
+.lp-dhero {
+	background: #000;
+	color: #fff;
+	padding-block-start: clamp(44px, 7vw, 104px);
+	overflow: hidden;
+}
+
+.lp-dhero__top { max-width: 980px; text-align: center; }
+.lp-dhero .lp-eyebrow { justify-content: center; color: #fff; }
+.lp-dhero .lp-eyebrow::before { outline-color: #fff; }
+
+.lp-dhero .lp-h1 {
+	color: #fff;
+	font-size: clamp(44px, 7.4vw, 104px);
+	line-height: 1;
+}
+
+.lp-uline {
+	text-decoration: underline;
+	text-decoration-color: var(--lp-lime);
+	text-decoration-thickness: .09em;
+	text-underline-offset: .14em;
+	text-decoration-skip-ink: none;
+}
+
+.lp-dhero .lp-lead {
+	margin: 28px auto 0;
+	color: rgba(255, 255, 255, .82);
+	max-width: 40em;
+}
+
+.lp-dhero .lp-actions { justify-content: center; }
+.lp-dhero .lp-note { color: rgba(255, 255, 255, .55); }
+
+.lp .lp-btn--lime { background: var(--lp-lime); border-color: var(--lp-lime); color: var(--lp-ink); }
+.lp .lp-btn--lime:hover, .lp .lp-btn--lime:focus-visible { background: #fff; border-color: #fff; color: var(--lp-ink); }
+.lp .lp-btn--ghost-light { background: transparent; border-color: #fff; color: #fff; }
+.lp .lp-btn--ghost-light:hover, .lp .lp-btn--ghost-light:focus-visible { background: var(--lp-lime); border-color: var(--lp-lime); color: var(--lp-ink); }
+
+/* The stage: "works with" column + visual. */
+.lp-dhero__stage {
+	display: grid;
+	grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+	max-width: 1180px;
+	min-height: clamp(460px, 50vw, 640px);
+	margin: clamp(48px, 7vw, 96px) auto 0;
+}
+
+.lp-dhero__list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: clamp(22px, 3vw, 40px);
+	padding: clamp(24px, 3vw, 40px) 16px;
+	background: #1c1c1c;
+	text-align: center;
+}
+
+.lp-dhero__list-title { font-size: 15px; color: rgba(255, 255, 255, .7); }
+
+.lp-dhero__list-item {
+	font-family: var(--lp-latin);
+	font-weight: 700;
+	font-size: clamp(18px, 2.2vw, 28px);
+	line-height: 1.1;
+	color: rgba(255, 255, 255, .78);
+}
+
+.lp-dhero__visual { position: relative; min-width: 0; }
+
+/* Lime block with a grid, bottom corner away from the list. */
+.lp-dhero__grid {
+	position: absolute;
+	inset-block-end: 0;
+	inset-inline-end: 0;
+	width: 72%;
+	height: 70%;
+	background-color: var(--lp-lime);
+	background-image:
+		linear-gradient(rgba(0, 0, 0, .12) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 0, 0, .12) 1px, transparent 1px);
+	background-size: 44px 44px;
+}
+
+/* Centered with inset + auto margins, not transform: the reveal animation owns transform. */
+.lp-dhero__phone,
+.lp-dhero__image {
+	position: absolute;
+	inset-block-end: -70px;
+	inset-inline: 0;
+	margin-inline: auto;
+	width: min(300px, 64%);
+	z-index: 1;
+}
+.lp-dhero__image { width: min(520px, 90%); height: auto; }
+.lp-dhero__phone .lp-phone { width: 100%; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7); }
+.lp-dhero__phone .lp-phone__screen { min-height: 0; color: var(--lp-ink); }
+
+/* Floating cards. */
+.lp-fcard {
+	position: absolute;
+	z-index: 2;
+	display: grid;
+	gap: 2px;
+	padding: 12px 14px;
+	border-radius: 12px;
+	background: #151515;
+	border: 1px solid rgba(255, 255, 255, .12);
+	color: #fff;
+	box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .8);
+	font-size: 13px;
+	line-height: 1.3;
+}
+
+.lp-fcard--stat {
+	inset-block-start: 16%;
+	inset-inline-end: 3%;
+	grid-template-columns: auto auto;
+	align-items: end;
+	column-gap: 12px;
+}
+
+.lp-fcard--stat b {
+	grid-column: 1 / -1;
+	font-family: var(--lp-display);
+	font-weight: 400;
+	font-size: clamp(24px, 3vw, 34px);
+	line-height: 1;
+}
+
+.lp-fcard--stat span { color: rgba(255, 255, 255, .75); }
+
+.lp-fcard--stat em {
+	justify-self: end;
+	padding: 2px 8px;
+	border: 1px solid var(--lp-lime);
+	border-radius: 999px;
+	color: var(--lp-lime);
+	font-style: normal;
+	font-size: 12px;
+	direction: ltr;
+}
+
+.lp-fcard--notice {
+	inset-block-end: 20%;
+	inset-inline-start: 4%;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	column-gap: 12px;
+	row-gap: 10px;
+	width: min(290px, 70%);
+}
+
+.lp-fcard__icon {
+	width: 34px;
+	height: 34px;
+	border-radius: 8px;
+	background: #fff;
+	background-image: radial-gradient(circle, var(--lp-lime) 0 30%, #000 31% 44%, transparent 45%);
+}
+
+.lp-fcard__text { font-weight: 700; }
+.lp-fcard__bars { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.lp-fcard__bars i { height: 5px; border-radius: 3px; background: var(--lp-lime); }
+
+@media (max-width: 700px) {
+	.lp-dhero__stage { grid-template-columns: minmax(0, 34%) minmax(0, 1fr); min-height: 520px; margin-block-start: 40px; }
+	.lp-dhero__list { gap: 22px; padding-inline: 8px; }
+	.lp-dhero__list-item { font-size: 16px; }
+	.lp-dhero__grid { width: 80%; height: 64%; }
+	.lp-dhero__phone { width: 84%; inset-block-end: -200px; }
+	.lp-fcard { font-size: 11px; padding: 9px 10px; }
+	.lp-fcard--stat { inset-block-start: 10%; }
+	.lp-fcard--notice { inset-block-end: 16%; width: 88%; inset-inline-start: 2%; }
+	.lp-fcard__icon { width: 26px; height: 26px; }
+}
+
 /* --- Reveal on scroll --------------------------------------------------- */
 /* Hidden only once the script is known to run (html.lp-js), so the content never stays invisible. */
 .lp-js .lp-reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--lp-ease), transform .8s var(--lp-ease); }

@@ -7,7 +7,15 @@
     "eyebrow": "Post-Purchase Upsell · Shopify & WooCommerce",
     "title": "מכירה נוספת בקליק אחד, רגע אחרי התשלום.",
     "lead": "הלקוח סיים לשלם והכרטיס שלו שמור. זה הרגע הכי חם בחנות — ו-LETS מציג בו הצעה שמתקבלת בלחיצה אחת, בלי להקליד פרטי כרטיס שוב. ההזמנה הראשונה לא נוגעים בה. ההכנסה עולה.",
-    "note": "עובד עם הסליקה הקיימת שלכם · Shopify ו-WooCommerce · עברית ואנגלית"
+    "note": "עובד עם הסליקה הקיימת שלכם · Shopify ו-WooCommerce · עברית ואנגלית",
+    "mark": "בקליק אחד",
+    "works_title": "עובד עם",
+    "works": ["Shopify", "WooCommerce", "PayPlus", "עברית + RTL"],
+    "stat_value": "₪5,916",
+    "stat_label": "הכנסה מהצעות החודש",
+    "stat_delta": "18%",
+    "notice_title": "ההצעה התקבלה · ₪39 חויבו",
+    "image": ""
   },
 
   "how": {

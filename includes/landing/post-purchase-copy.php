@@ -16,11 +16,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Page template this copy belongs to. */
 const LETS_LP_POST_PURCHASE_TEMPLATE = 'templates/landing-post-purchase.php';
 
-Lets_Landing_Copy::register(
-	LETS_LP_POST_PURCHASE_TEMPLATE,
-	__DIR__ . '/post-purchase-copy.json',
-	array( 'visual' ) // which mockup a feature shows — structure, not text.
-);
+/** The same page with the dark hero; shares the copy. */
+const LETS_LP_POST_PURCHASE_TEMPLATE_V2 = 'templates/landing-post-purchase-v2.php';
+
+foreach ( array( LETS_LP_POST_PURCHASE_TEMPLATE, LETS_LP_POST_PURCHASE_TEMPLATE_V2 ) as $lets_lp_template ) {
+	Lets_Landing_Copy::register(
+		$lets_lp_template,
+		__DIR__ . '/post-purchase-copy.json',
+		array( 'visual' ) // which mockup a feature shows — structure, not text.
+	);
+}
+unset( $lets_lp_template );
 
 /**
  * @param int $post_id Page; 0 for the defaults.
@@ -35,7 +41,7 @@ function lets_lp_post_purchase( $post_id = 0 ) {
  * @return bool Whether the post uses this landing template.
  */
 function lets_lp_is_post_purchase( $post ) {
-	return LETS_LP_POST_PURCHASE_TEMPLATE === get_page_template_slug( $post );
+	return in_array( get_page_template_slug( $post ), array( LETS_LP_POST_PURCHASE_TEMPLATE, LETS_LP_POST_PURCHASE_TEMPLATE_V2 ), true );
 }
 
 /**

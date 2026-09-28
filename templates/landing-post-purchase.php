@@ -180,13 +180,85 @@ function lets_lp_visual( $kind, array $m ) {
 	}
 }
 
+/**
+ * Dark hero: centered headline, then a stage with the "works with" column,
+ * a lime grid block, the phone with the offer and two floating cards.
+ *
+ * @param array<string,mixed>  $c Copy.
+ * @param array<string,string> $m Mock copy.
+ */
+function lets_lp_dark_hero( array $c, array $m ) {
+	$h     = $c['hero'];
+	$title = esc_html( $h['title'] );
+	$mark  = isset( $h['mark'] ) ? trim( (string) $h['mark'] ) : '';
+
+	// Underline the key phrase, if it is in the title.
+	if ( '' !== $mark && false !== mb_strpos( $h['title'], $mark ) ) {
+		$pos   = mb_strpos( $h['title'], $mark );
+		$title = esc_html( mb_substr( $h['title'], 0, $pos ) )
+			. '<span class="lp-uline">' . esc_html( $mark ) . '</span>'
+			. esc_html( mb_substr( $h['title'], $pos + mb_strlen( $mark ) ) );
+	}
+	?>
+	<section class="lp-dhero">
+		<div class="lp-wrap lp-dhero__top lp-reveal">
+			<div class="lp-eyebrow"><?php echo esc_html( $h['eyebrow'] ); ?></div>
+			<h1 class="lp-h1"><?php echo $title; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above. ?></h1>
+			<p class="lp-lead"><?php echo esc_html( $h['lead'] ); ?></p>
+			<div class="lp-actions">
+				<?php lets_lp_button( $c['cta_primary'], 'lp-btn--lime' ); ?>
+				<?php lets_lp_button( $c['cta_secondary'], 'lp-btn--ghost-light' ); ?>
+			</div>
+			<p class="lp-note"><?php echo esc_html( $h['note'] ); ?></p>
+		</div>
+
+		<div class="lp-dhero__stage">
+			<aside class="lp-dhero__list lp-reveal lp-reveal--2">
+				<span class="lp-dhero__list-title"><?php echo esc_html( $h['works_title'] ); ?></span>
+				<?php foreach ( (array) $h['works'] as $item ) : ?>
+					<span class="lp-dhero__list-item"><?php echo esc_html( $item ); ?></span>
+				<?php endforeach; ?>
+			</aside>
+
+			<div class="lp-dhero__visual" data-sales-image="hero-dark">
+				<div class="lp-dhero__grid" aria-hidden="true"></div>
+
+				<?php if ( ! empty( $h['image'] ) ) : ?>
+					<img class="lp-dhero__image lp-reveal lp-reveal--2" src="<?php echo esc_url( $h['image'] ); ?>" alt="" />
+				<?php else : ?>
+					<div class="lp-dhero__phone lp-reveal lp-reveal--2"><?php lets_lp_visual( 'phone', $m ); ?></div>
+				<?php endif; ?>
+
+				<div class="lp-fcard lp-fcard--stat lp-reveal lp-reveal--3">
+					<b><?php echo esc_html( $h['stat_value'] ); ?></b>
+					<span><?php echo esc_html( $h['stat_label'] ); ?></span>
+					<em>↑ <?php echo esc_html( $h['stat_delta'] ); ?></em>
+				</div>
+
+				<div class="lp-fcard lp-fcard--notice lp-reveal lp-reveal--3">
+					<span class="lp-fcard__icon" aria-hidden="true"></span>
+					<span class="lp-fcard__text"><?php echo esc_html( $h['notice_title'] ); ?></span>
+					<span class="lp-fcard__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php
+}
+
 $lets_lp = lets_lp_post_purchase( get_the_ID() );
 $m       = $lets_lp['mock'];
 
+// templates/landing-post-purchase-v2.php sets this to 'dark' and includes this file.
+$lets_lp_variant = isset( $lets_lp_variant ) ? $lets_lp_variant : 'light';
+
 get_header();
 ?>
-<main id="content" class="site-main lp" dir="rtl" lang="he">
+<main id="content" class="site-main lp lp--<?php echo esc_attr( $lets_lp_variant ); ?>" dir="rtl" lang="he">
 
+	<?php if ( 'dark' === $lets_lp_variant ) : ?>
+		<?php lets_lp_dark_hero( $lets_lp, $m ); ?>
+	<?php else : ?>
 	<!-- Hero -->
 	<section class="lp-hero">
 		<div class="lp-wrap">
@@ -216,6 +288,7 @@ get_header();
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<!-- How it works -->
 	<section class="lp-section lp-section--tight">
